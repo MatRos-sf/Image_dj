@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import ThumbnailSize, ProfileTier
+
+admin.site.register(ProfileTier)
+admin.site.register(ThumbnailSize)
