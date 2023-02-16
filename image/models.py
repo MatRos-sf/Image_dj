@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 from datetime import timedelta
 
@@ -18,7 +19,7 @@ class Image(models.Model):
 
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     image = models.ImageField(upload_to=get_upload_path)
-    expiry = models.PositiveIntegerField(null=True)
+    expiry = models.PositiveIntegerField(null=True, validators=[MinValueValidator(300), MaxValueValidator(30000)])
 
     is_original = models.BooleanField(default=True)
     is_active = models.BooleanField(default=True)
