@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Basic",
+        "original_file": false,
+        "binary_file": false
+    },
+    {
+        "name": "Premium",
+        "original_file": true,
+        "binary_file": false
+    },
+    {
+        "name": "Enterprise",
+        "original_file": true,
+        "binary_file": true
+    }
+]

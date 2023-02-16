@@ -4,8 +4,6 @@ from random import randint
 
 from tier.models import ThumbnailSize, ProfileTier
 
-
-
 class ThumbnailSizeTests(TestCase):
 
     def test_create_thumbnailsize(self):
