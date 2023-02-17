@@ -1,4 +1,4 @@
-# Project Name
+# Project Image - Interview 
 This is a Django project upload image.
 
 ## Prerequisites
