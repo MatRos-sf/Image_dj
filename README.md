@@ -9,7 +9,7 @@ Before you start, make sure you have the following installed:
 ## Inastallation
 1. Clone the repository:
 ```shell
-git clone https://github.com/your_username/your_project.git
+git clone https://github.com/MatRos-sf/Image_dj.git
 ```
 2. Install the requirements:
 ```shell
