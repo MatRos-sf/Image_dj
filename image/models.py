@@ -3,7 +3,6 @@ from django.utils import timezone
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.core.exceptions import ValidationError
 
-
 from datetime import timedelta
 
 from user.models import Profile

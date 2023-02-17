@@ -40,18 +40,18 @@ def create_images(sender, instance, created, **kwargs):
                 new_name= rename_path(original_image_path, str(size))
                 img.save(new_name)
 
+                directory, filename = os.path.split(new_name)
                 # create models following by rules
                 if not user_tier.original_file and index == 0:
 
                     currently = instance
-                    currently.image = new_name
+                    currently.image = f"{instance.profile.pk}/{filename}"
                     currently.save()
 
                     # old file remove because we don't need original
                     os.remove(original_image_path)
 
                 else:
-                    directory, filename = os.path.split(new_name)
                     Image.objects.create(profile=instance.profile, image=f"{instance.profile.pk}/{filename}",
                                          is_original=False, gallery=gallery)
 
