@@ -4,10 +4,13 @@ from rest_framework import permissions
 from image.models import Image, Gallery
 from .serializers import BasicUploadSerializer, ExtendedUploadSerializer, GallerySerializer
 
+class IsAdminUserOrIsSelf(permissions.BasePermission):
+    def has_object_permission(self, request, view, obj):
+        return request.user.is_staff or obj.profile == request.user.profile
 
 class ImageViewSet(ModelViewSet):
 
-    permission_classes = [permissions.IsAdminUser]
+    #permission_classes = [permissions.IsAdminUser]
     serializer_class = BasicUploadSerializer
 
     def get_queryset(self):
@@ -25,10 +28,19 @@ class ImageViewSet(ModelViewSet):
 
 class GalleryViewSet(ModelViewSet):
 
-    permission_classes = [permissions.IsAdminUser]
+    #permission_classes = [permissions.IsAdminUser]
     serializer_class = GallerySerializer
     queryset = Gallery.objects.all()
 
+class ImagesUserViewSet(ModelViewSet):
 
+    permission_classes = [permissions.IsAuthenticated, IsAdminUserOrIsSelf]
+    serializer_class = BasicUploadSerializer
+
+
+    def get_queryset(self):
+        images = Image.objects.filter(profile=self.request.user.profile)
+        print(images.count())
+        return [ i for i in images if i.link_active ]
 
 

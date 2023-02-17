@@ -9,3 +9,4 @@ class ProfileViewSet(ModelViewSet):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializers
+
