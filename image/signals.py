@@ -3,7 +3,7 @@ from django.dispatch import receiver
 from django.utils import timezone
 
 from PIL import Image as PillowImage
-
+from random import randint
 from .models import Image, Gallery
 import os
 
@@ -56,7 +56,12 @@ def create_images(sender, instance, created, **kwargs):
                                          is_original=False, gallery=gallery)
 
             # create binary image
+            if not instance.expiry:
+                expiry = randint(300, 30000)
+            else:
+                expiry = instance.expiry
             ## I'm not sure!
+
             if instance.binary_permission:
                 img = PillowImage.open(original_image_path)
                 binary_image = img.convert('1')
@@ -65,7 +70,7 @@ def create_images(sender, instance, created, **kwargs):
                 binary_image.save(new_name)
                 directory, filename = os.path.split(new_name)
                 Image.objects.create(profile=instance.profile, image=f"{instance.profile.pk}/{filename}",
-                                     expiry=instance.expiry, is_original=False, gallery=gallery)
+                                     expiry=expiry, is_original=False, gallery=gallery)
 
             # instance.expiry = None because only binary Image need expiry
             instance.expiry = None

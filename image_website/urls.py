@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('tier/', include("tier.urls")),
+    path('image/', include("image.urls"))
 ]

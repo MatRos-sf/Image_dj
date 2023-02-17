@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils import timezone
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.exceptions import ValidationError
+
 
 from datetime import timedelta
 
@@ -25,7 +27,7 @@ class Image(models.Model):
     is_active = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
 
-    gallery = models.ForeignKey(Gallery, on_delete=models.CASCADE, null=True, related_name='images')
+    gallery = models.ForeignKey(Gallery, on_delete=models.CASCADE, null=True, blank=True, related_name='images',)
 
     @property
     def get_profile_name(self):
@@ -54,4 +56,7 @@ class Image(models.Model):
     def __str__(self):
         return f"{self.get_profile_name}__{self.get_profile_tier}: {self.id}"
 
-
+    def clean(self):
+        super(Image, self).clean()
+        if self.expiry is not None and (self.expiry < 300 or self.expiry > 30000):
+            raise ValidationError('Expiry value must be between 300 and 30000')
