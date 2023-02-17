@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'tier',
     'user',
     'user_api',
-    'image'
+    'image',
+    'image_api'
 
 ]
 
