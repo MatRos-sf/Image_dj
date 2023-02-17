@@ -24,7 +24,8 @@ python manage.py migrate
 ```shell
 python manage.py createsuperuser
 ```
-this way default tier will be created with superuser . 
+this way default tier will be created with superuser. 
+
 5. Run the development server:
 ```shell
 python manage.py runserver
