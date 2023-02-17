@@ -1,12 +1,12 @@
-#Project Name
+# Project Name
 This is a Django project upload image.
 
-##Prerequisites
+## Prerequisites
 Before you start, make sure you have the following installed:
 
 > Python (version 3.8 or higher)
 
-##Inastallation
+## Inastallation
 1. Clone the repository:
 ```shell
 git clone https://github.com/your_username/your_project.git
@@ -27,9 +27,9 @@ python manage.py runserver
 ```
 You should now be able to access the development server at http://localhost:8000/.
 
-##Deployment 
+## Deployment 
 When you are ready to deploy the project, you will need to:
 
 1. Set `DEBUG = False` in `settings.py`.
 2. Add your production domain to the `ALLOWED_HOSTS` list in `settings.py`.
-3You will also need to configure your web server to serve media files.
+3. You will also need to configure your web server to serve media files.
