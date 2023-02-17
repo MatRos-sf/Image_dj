@@ -28,7 +28,7 @@ def create_images(sender, instance, created, **kwargs):
             original_image_path = instance.image.path
 
             # create Gallery
-            gallery = Gallery.objects.create(name=f"{instance.pk}")
+            gallery = Gallery.objects.create(name=f"{instance.pk}", author=instance.profile)
             # add modeel Gallery to Image
             instance.gallery = gallery
 
