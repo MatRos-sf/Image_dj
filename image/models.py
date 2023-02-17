@@ -27,7 +27,7 @@ class Image(models.Model):
     is_active = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
 
-    gallery = models.ForeignKey(Gallery, on_delete=models.CASCADE, null=True, blank=True, related_name='images',)
+    gallery = models.ForeignKey(Gallery, on_delete=models.CASCADE, null=True, blank=True, related_name='images')
 
     @property
     def get_profile_name(self):
