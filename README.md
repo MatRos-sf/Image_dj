@@ -20,7 +20,11 @@ pip install -r requirements.txt
 ```shell
 python manage.py migrate
 ```
-4. If you want create default tier runsever and go to `/tier/first_run/`
+4. If you want create default tier then runsever and go to `/tier/first_run/` or create a superuser:
+```shell
+python manage.py createsuperuser
+```
+this way default tier will be created with superuser . 
 5. Run the development server:
 ```shell
 python manage.py runserver
