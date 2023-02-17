@@ -6,7 +6,7 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 
 from image.models import Image, Gallery
 from tier.models import ProfileTier
-
+#!
 class ImageTest(TestCase):
     def setUp(self) -> None:
         user = User.objects.create_user(username='test1', password='1234567')
